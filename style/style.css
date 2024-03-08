@@ -88,6 +88,10 @@ nav {
 
 }
 
+.left {
+    margin-left: 30px;
+}
+
 .mainText {
     background-color: lime;
     color: black;
