@@ -47,9 +47,14 @@ ini_set('display_errors', 1);
             </ul>
         </div>
     </div>
-    <div class="backgroundBlack">
-        
+    <div class="centered height">
+        <a class=" milieu title">
+            <span class="titleFirst">spread your</span>
+            <span class="titleSecond"> arts.</span>
+        </a>
+        <a class="subtitle">gallerie d'art virtuelle</a>
     </div>
+
     <div class="info-bar" style="display: none;">
         <div class="info-controls">
             <a href="#" class="info-control prev">◄</a>
