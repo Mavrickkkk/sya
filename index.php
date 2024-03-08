@@ -23,52 +23,33 @@ ini_set('display_errors', 1);
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div class="sticky-bar">
-        <div class="bar-content">
-            <div class="bar-title">SYA</div>
-            <ul class="bar-links">
-                <li><a href="https://www.paypal.com/donate/?hosted_button_id=8XFJ7GKL2Y53W">don</a></li>
-                <li><a href="browse/verified.php">parcourir</a></li>
-              <?php
-              	if (isset($_SESSION["name"]))
-                	echo "<li><a href=\"add/send.php?type=illustration\">add</a></li>";
-              ?>
-                <?php
-                    if (!isset($_SESSION["username"])){
+    <nav>
+        <a href="#" class="nav-item">ajouter.</a>
+        <a href="#" class="nav-item">parcourir</a>
+        <?php
+            if (isset($_SESSION["username"]) && $_SESSION["username"]!=""){
+        ?>
+            <a class="nav-item" href="connect/profile.php?username=<?php echo $_SESSION["username"]; ?>">mon compte.</a>
+        <?php
+            } else {
                 ?>
-                <li><a href="connect/login.php">se connecter</a></li>
-                <?php
-                    }else {
-                ?>
-                <li><a href="connect/profile.php?username=<?php echo $_SESSION["username"]; ?>"><?php echo $_SESSION["name"]; ?></a></li>
-                <?php
-                    }
-                ?>
-            </ul>
-        </div>
-    </div>
-    <div class="centered height">
-        <a class=" milieu title">
-            <span class="titleFirst">spread your</span>
+            <a class="nav-item" href="connect/login.php">mon compte.</a>
+        <?php
+            }
+        ?>
+    </nav>
+    <div class="height">
+        <a class="centered milieu title">
+            <span class="titleFirst">spread your </span>
+            <span> </span>
             <span class="titleSecond"> arts.</span>
         </a>
-        <a class="subtitle">gallerie d'art virtuelle</a>
+        <a class="centered subtitle">gallerie d'art virtuelle</a>
     </div>
 
-    <div class="info-bar" style="display: none;">
-        <div class="info-controls">
-            <a href="#" class="info-control prev">◄</a>
-        </div>
-        <div class="info-content">
-            <a href="https://www.instagram.com/spreadyourarts/" class="info-link">suit nous sur instagram</a>
-            <a href="news/lefoot.php" class="info-link">"LE FOOT" 25/02</a>
-            <a href="https://youtu.be/HXBRgh2n8Kw?si=bRl_1BD5gVzd9lyT" class="info-link">trailer "les fleurs" saison 0</a>
-        </div>
-        <div class="info-controls">
-            <a href="#" class="info-control next">►</a>
-        </div>
+    <div class="centered">
+        <img src="pics/home.jpg" class="homepic">
     </div>
-<img src="pics/fleur1.png" class="flower1">
     <div class="centered">
         <a href="about/about.php" class="mainText4">C'EST QUOI CE SITE</a>
     </div>
