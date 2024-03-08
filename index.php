@@ -72,9 +72,6 @@ ini_set('display_errors', 1);
     <div class="centered">
         <a class="mainText3" href="browse/verified.php">ILLUSTRATIONS</a>
     </div>
-    <div class="centeredload">
-        <a class="mainText2">SYA</a>
-    </div>
     <div class="singleContent">
     <?php
     $requestSearch = "SELECT * from illustration WHERE type=3 AND month=$month";
