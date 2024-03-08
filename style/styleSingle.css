@@ -1,0 +1,147 @@
+@font-face {
+    font-family: "Futura";
+    src: url(../fonts/FuturaBoldItalic.ttf);
+}
+@font-face {
+    font-family: "FuturabookItalic";
+    src: url(../fonts/FuturaBookItalic.ttf);
+}
+@font-face {
+    font-family: "Futurabook";
+    src: url(../fonts/FuturaBook.ttf);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.singleContent {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.presents {
+    font-family: Futura, sans-serif;
+    font-size: 130%;
+    text-align: left;
+    display: block;
+    color: #262626;
+    position: relative;
+    margin-bottom: 25px;
+    text-decoration: none;
+}
+
+.picContent {
+    margin: 15px;
+    max-width: 60vw;
+    max-height: 60vh;
+    object-fit: cover;
+}
+
+.pic {
+    max-width: 60vw;
+    max-height: 60vh;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.2);
+    transition: transform 1s ease-in-out;
+}
+
+.picName {
+    font-family: FuturabookItalic, sans-serif;
+    font-size: 130%;
+    text-align: center;
+    display: block;
+    color: #262626;
+    margin-top: 30px;
+}
+
+.audio{
+    position: relative;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.commentAdd {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    margin-top: 100px;
+}
+
+.commentarea {
+    width: 300px; /* Ajustez la largeur selon vos besoins */
+    height: 150px; /* Ajustez la hauteur selon vos besoins */
+    padding: 10px;
+    font-size: 130%;
+    font-family: "Futurabook", sans-serif;
+    color: black;
+    border: none;
+    outline: none;
+}
+
+.submitButton {
+    display: flex;
+    justify-content: center;
+}
+
+.sendButton {
+    border: none;
+    background-color: white;
+    color: black;
+    font-family: Futurabook, sans-serif;
+    font-size: 130%;
+}
+
+.sendButton:hover {
+    background-color: black;
+    color: white;
+}
+
+.commentTitle {
+    font-family: Futura, sans-serif;
+    font-size: 130%;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+}
+
+.commentList {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.commentSubtitle {
+    font-family: Futurabook, sans-serif;
+    font-size: 130%;
+    color: black;
+    text-decoration: none;
+}
+
+.fullComment {
+    position: relative;
+    margin-top: 30px;
+}
+
+.comment {
+    display: block;
+    font-family: FuturabookItalic, sans-serif;
+    font-size: 130%;
+    color: black;
+    text-decoration: none;
+}
+
+.xv {
+    width: 30px;
+}
