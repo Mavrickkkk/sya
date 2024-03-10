@@ -56,7 +56,7 @@ if (isset ($_POST["submit"])) {
 
 <html>
 <head>
-    <title>sya</title>
+    <title>créer un compte.</title>
     <link rel="icon" href="../pics/favicon.png"/>
     <link rel="stylesheet" href="../style/styleConnect.css">
     <meta charset="utf-8"/>
@@ -67,15 +67,16 @@ if (isset ($_POST["submit"])) {
     <div class="bar-content">
         <a href="../index.php"></a>
         <ul class="bar-links">
-            <li><a href="../browse/verified.php" class="links">browse</a></li>
-            <li><a href="../about/about.php" class="links">about</a></li>
+            <li><a class="links">cette page est en travaux</a></li>
+            <li><a href="../browse/verified.php" class="links">parcourir</a></li>
+            <li><a href="../" class="links">menu</a></li>
             <?php
             if (!isset($_SESSION["username"])) {
                 ?>
                 <?php
             } else {
                 ?>
-                <li><a class="links">what</a></li>
+                <li><a class="links">quoi</a></li>
                 <?php
             }
             ?>
@@ -85,12 +86,12 @@ if (isset ($_POST["submit"])) {
 <div class="logoContainer">
     <a href="../index.php"><img src="../pics/logo4.png" class="logo"></a>
 </div>
-<div class="textCenter"><a href="login.php" class="new">well, I have an account</a></div>
+<div class="textCenter"><a href="login.php" class="new">j'ai déjà un compte</a></div>
 <div class="centered-container">
     <form action="register.php" method="POST">
-        <a>username (unique) : </a><input class="search" type="text" name="username" minlength="3" maxlength="25" pattern="[A-Za-z]+" title="Only letters are allowed" required></br>
-        <a>artist name :</a> <input class="search" type="text" name="name" minlength="3" maxlength="25" required></br>
-        <a>password :</a> <input class="search" type="password" name="password" minlength="3" maxlength="60" required></br>
+        <a>identifiant (doit être unique) : </a><input class="search" type="text" name="username" minlength="3" maxlength="25" pattern="[A-Za-z]+" title="Only letters are allowed" required></br>
+        <a>nom :</a> <input class="search" type="text" name="name" minlength="3" maxlength="25" required></br>
+        <a>mot de passe :</a> <input class="search" type="password" name="password" minlength="3" maxlength="60" required></br>
         <div class="g-recaptcha" data-sitekey="6Lfc3VApAAAAABcT3XdJXHL0mbbc8EuxM5HJpzt1"></div>
         <div class="submitButton"><input class="sendButton" type="submit" name="submit" value="submit"></div>
     </form>

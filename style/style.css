@@ -7,10 +7,6 @@
     src: url(../fonts/FuturaBookItalic.ttf);
 }
 @font-face {
-    font-family: "archivo";
-    src: url(../fonts/archivo.ttf);
-}
-@font-face {
     font-family: "nohemiEB";
     src: url(../fonts/NOHEMI-EXTRABOLD.otf);
 }
@@ -27,6 +23,12 @@
 
 body {
     background-color: #0F0F0F;
+}
+
+.centered {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 nav {
@@ -51,7 +53,8 @@ nav {
 .milieu {
     margin-top: 35vh;
 }
-.title {
+
+.mainTitle {
     font-size: 600%;
 }
 
@@ -67,11 +70,9 @@ nav {
 }
 
 .subtitle {
-    display: block;
     font-family: NohemiEL, sans-serif;
     font-size: 100%;
     color: #7e7e7e;
-    margin-top: 30px;
 }
 
 .height {
@@ -84,285 +85,319 @@ nav {
 }
 
 .title {
-    font-size: 130%;
+    font-family: NohemiEB, sans-serif;
+    font-size: 400%;
+    color: white;
+}
 
+.EL {
+    font-family: NohemiEL, sans-serif;
+}
+
+.rightTitle {
+    font-family: NohemiEL, sans-serif;
+    font-size:150%;
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.marginTop {
+    margin-top: 100px;
+}
+
+.marginBottom {
+    margin-bottom: 50px;
 }
 
 .left {
     margin-left: 30px;
 }
 
-.mainText {
-    background-color: lime;
-    color: black;
-    font-family: Futura, sans-serif;
-    font-size: 400%;
-}
-
-.mainText2 {
-    background-color: lime;
-    color: black;
-    font-family: Futura, sans-serif;
-    font-size: 400%;
-}
-
-.mainText3 {
-    background-color: #ff5307;
-    color: white;
-    font-family: Futura, sans-serif;
-    font-size: 200%;
-    padding: 5px;
-    text-decoration: none;
-}
-
-.mainText4 {
-    background-color: #ff5307;
-    color: #ffffff;
-    font-family: Futura, sans-serif;
-    font-size: 400%;
-}
-
-.centered {
+.width {
     width: 100%;
     display: flex;
-    justify-content: center;
-}
-
-.centeredload {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 101;
-    pointer-events: none;
-}
-
-.centered-top {
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    margin-top: 300px;
-    margin-bottom: 100px;
-}
-
-.flower1 {
-    position: relative;
-    width: 300px;
-    left: 65vw;
-    top: 70px;
-    z-index: 100;
-}
-
-.flower2 {
-    position: relative;
-    width: 150px;
-    left: 20vw;
-    margin-bottom: 150px;
-}
-
-.flower3 {
-    position: absolute;
-    width: 200px;
-    left: 50vw;
-    margin-top: 100px;
-    z-index: 1;
-}
-
-.pic1 {
-    position: relative;
-    top: -70px;
-    width: 100vw;
-    height: 100vh;
-    box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.2);
-}
-
-.allTitre {
-    top: 0px;
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-}
-
-.titreContainer {
-    position: absolute;
-    top: 30vh;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.titreHome {
-    position: absolute;
-    left: 0;
-    margin-left: 20px;
-    font-family: NohemiL, sans-serif;
-    font-size: 1000%;
-    color: white;
-}
-
-.finTitreHome {
-    position: absolute;
-    right: 0;
-    margin-right: 20px; /* Pour un peu d'espace à droite */
-    font-family: NohemiEB, sans-serif;
-    font-size: 1000%;
-    color: white;
-    top: 20vh;
-}
-
-
-.info-bar {
-    margin-top: -70px;
-    background-color: #00FF00;
-    color: black;
-    font-family: 'Futurabook', sans-serif;
-    font-size: 150%;
-    padding: 10px;
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.info-controls {
-    display: flex;
-    align-items: center;
-}
-
-.info-link {
-    margin-right: 20px;
-    text-decoration: none;
-    color: black;
-}
-
-.info-control {
-    font-size: 100%;
-    text-decoration: none;
-    color: black;
-    margin: 0 5px;
-}
-
-.info-control:hover {
-    cursor: pointer;
-}
-
-.info-link:not(:first-child) {
-    display: none;
-}
-
-
-.picbloc {
-    position: relative;
-    width: 100%;
-    top: 100px;
-    text-align: center;
-}
-
-.singleContent {
-    text-align: center;
-    width: 100%;
-    display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    margin-top: 50px;
-    margin-bottom: 150px;
 }
 
-.presents {
-    font-family: Futura, sans-serif;
-    font-size: 130%;
-    text-align: left;
-    display: block;
-    color: #262626;
-    position: relative;
-    margin-bottom: 25px;
-    text-decoration: none;
-}
-
-.picContent {
-    margin: 15px;
-    max-width: 60vw;
-    max-height: 80vh;
-    object-fit: cover;
-    margin-bottom: 50px;
-}
-
-.pic {
-    max-width: 60vw;
-    max-height: 80vh;
+.illustration {
+    margin: 10px;
+    max-width: 35vw;
+    max-height: 35vh;
     object-fit: cover;
     border-radius: 15px;
-    box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.2);
     transition: transform 1s ease-in-out;
 }
 
-.pic:hover {
-    transform: scale(1.05);
+.choicePic {
+    width: 45vw;
+    border-radius: 15px;
+    margin: 0 30px;
 }
 
-.picName {
-    font-family: Futurabook, sans-serif;
-    font-size: 115%;
-    text-align: center;
-    display: block;
-    color: #262626;
-    text-decoration: none;
-    margin-top: 15px;
+.reseaux {
+    width: 70vw;
+    border-radius: 15px;
 }
 
-.xvtContent {
-    display: flex;
-    justify-content: center;
+.soutenir {
+    width: 70vw;
+    border-radius: 15px;
 }
 
-.x {
-    background-color: #AF1B1B;
-    font-family: Futura, sans-serif;
-    text-decoration: none;
+/**************************************************************************************************************************/
+/* verified ou unmoderate */
+/**************************************************************************************************************************/
+
+.pageChoice {
+    font-family: NohemiEL, sans-serif;
+    font-size: 130%;
+}
+
+.pageChoice a {
     color: white;
-    margin: 20px;
-}
-
-.v {
-    background-color: #0000FF;
-    font-family: Futura, sans-serif;
     text-decoration: none;
-    color: white;
-    margin: 20px;
+    padding: 5px 5px;
 }
 
-.top {
-    background-color: #00FF00;
-    font-family: Futura, sans-serif;
+.pageChoice a:hover {
+    background-color: #555;
+}
+
+.blue {
+    background-color: #165CFB;
+    width: 95vw;
+    border-radius: 10px;
+    height: 15px;
+    margin-bottom: 5px;
+}
+.blue2 {
+    background-color: #0b3ca9;
+    width: 95vw;
+    border-radius: 10px;
+    height: 15px;
+    margin-bottom: 5px;
+}
+.blue3 {
+    background-color: #052262;
+    width: 95vw;
+    border-radius: 10px;
+    height: 15px;
+}
+
+.red {
+    background-color: #F94D12;
+    width: 95vw;
+    border-radius: 10px;
+    height: 15px;
+    margin-bottom: 5px;
+}
+
+.red2 {
+    background-color: #a93108;
+    width: 95vw;
+    border-radius: 10px;
+    height: 15px;
+    margin-bottom: 5px;
+}
+
+.red3 {
+    background-color: #601a02;
+    width: 95vw;
+    border-radius: 10px;
+    height: 15px;
+}
+
+/**************************************************************************************************************************/
+/* illustration */
+/**************************************************************************************************************************/
+
+.totalHeight {
+    height: 100vh;
+}
+
+.midHeight {
+    align-items: center;
+}
+
+.big {
+    max-width: 60vw;
+    max-height: 60vh;
+}
+
+.text {
+    font-family: NohemiEB, sans-serif;
+    font-size: 150%;
     text-decoration: none;
-    color: white;
-    margin: 20px;
 }
 
-footer {
-    position: relative;
-    width: 100%;
-    margin-top: 200px;
+.redText {
+    color: #AF1B1B;
+}
+
+.margin {
+    margin: 15px;
+}
+
+.buttonBlue {
+    background-color: #165CFB;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin: 0 10px;
+}
+
+.buttonBlue:hover {
+    background-color: #0d3ca6;
+}
+
+.buttonRed {
+    background-color: #EE4A2F;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin: 0 10px;
+}
+.buttonRed:hover {
+     background-color: #a2301e;
+}
+
+.buttonWB {
     background-color: white;
-    padding: 20px;
-    text-align: center;
-  	bottom: 0;
-  	box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.2);
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-around;
-}
-
-.footer-content a {
-    text-decoration: none;
     color: black;
-    font-family: 'Futura', sans-serif;
-    font-size: 100%;
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin: 0 10px;
+    display: inline-flex;
+    align-items: center;
+    width: auto;
+}
+
+.buttonWB:hover {
+    background-color: #a6a6a6;
+}
+
+.buttonBW {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin: 0 10px;
+    display: inline-flex;
+    align-items: center;
+    width: auto;
+}
+
+.buttonBW:hover {
+    background-color: #282828;
+}
+
+.lilMarginTop {
+    margin-top: 30px;
+}
+
+.mini {
+    background-image: url(../pics/heart.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    margin-left: 10px;
+}
+
+.backW {
+    background-color: white;
+    width: 70%;
+    height: auto;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.black {
+    color: black;
+}
+
+.white {
+    color: white;
+}
+
+.form-group label {
+    font-family: NohemiEB, sans-serif;
+    font-size: 200%;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    outline: none;
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
+    font-size: 150%;
+    font-family: NohemiEL, sans-serif;
+    border: none;
+    padding: 10px;
+}
+
+.form-group button {
+    display: block;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/**************************************************************************************************************************/
+/* profil */
+/**************************************************************************************************************************/
+
+.tiffany {
+    background-color: #0ABAB5;
+    width: 95vw;
+    border-radius: 10px;
+    height: 15px;
+    margin-bottom: 5px;
+}
+
+.tiffany2 {
+    background-color: #067774;
+    width: 95vw;
+    border-radius: 10px;
+    height: 15px;
+    margin-bottom: 5px;
+}
+
+.tiffany3 {
+    background-color: #033836;
+    width: 95vw;
+    border-radius: 10px;
+    height: 15px;
+    margin-bottom: 5px;
+}
+
+.backTiffany {
+    background-color: #0ABAB5;
+}
+
+.backTiffany:hover {
+    background-color: #078885;
+}
+
+/**************************************************************************************************************************/
+/* soutiens */
+/**************************************************************************************************************************/
+
+.donateButton {
+    font-family: NohemiEB, sans-serif;
+    font-size: 600%;
+    background-color: #430707;
+    color: #FF0000;
+    border-radius: 30px;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.donateButton:hover {
+    background-color: #FFECE6;
 }

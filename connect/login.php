@@ -40,7 +40,7 @@ if (isset($_POST["submit"])) {
 
 <html>
 <head>
-    <title>sya</title>
+    <title>se connecter.</title>
     <link rel="icon" href="../pics/favicon.png"/>
     <link rel="stylesheet" href="../style/styleConnect.css">
     <meta charset="utf-8"/>
@@ -50,15 +50,16 @@ if (isset($_POST["submit"])) {
     <div class="bar-content">
         <a href="../index.php"></a>
         <ul class="bar-links">
-            <li><a href="../browse/verified.php" class="links">browse</a></li>
-            <li><a href="../about/about.php" class="links">about</a></li>
+            <li><a class="links">cette page est en travaux</a></li>
+            <li><a href="../browse/verified.php" class="links">parcourir</a></li>
+            <li><a href="../" class="links">menu</a></li>
             <?php
             if (!isset($_SESSION["username"])){
                 ?>
                 <?php
             }else {
                 ?>
-                <li><a class="links">what</a></li>
+                <li><a class="links">quoi</a></li>
                 <?php
             }
             ?>
@@ -68,12 +69,12 @@ if (isset($_POST["submit"])) {
 <div class="logoContainer">
     <a href="../index.php"><img src="../pics/logo4.png" class="logo"></a>
 </div>
-<div class="textCenter"><a href="register.php" class="new">i'm new</a></div>
+<div class="textCenter"><a href="register.php" class="new">je suis nouveau</a></div>
 <div class="centered-container">
     <form action="login.php" method="POST">
-        <a>username :</a> <input class="search" type="text" name="username"></br>
-        <a>password :</a> <input class="search" type="password" name="password"></br>
-        <div class="submitButton"><input class="sendButton" type="submit" name="submit" value="connect"></div>
+        <a>nom d'utilisateur :</a> <input class="search" type="text" name="username"></br>
+        <a>mot de passe :</a> <input class="search" type="password" name="password"></br>
+        <div class="submitButton"><input class="sendButton" type="submit" name="submit" value="se connecter"></div>
     </form>
 </div>
 </body>
