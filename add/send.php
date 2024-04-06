@@ -27,7 +27,7 @@ if (isset($_SESSION["username"])) {
     $currentPostCount = $row['post'];
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if ($currentPostCount < 15) {
+        if ($currentPostCount < 30) {
             if (!isset($_POST["accept_terms"])) {
                 $error_message = "<a class='text white centered'>Désolé, mais vous ne pouvez pas envoyer quelque chose sans accepter les conditions</a>";
             } else {
@@ -76,7 +76,7 @@ if (isset($_SESSION["username"])) {
                 }
             }
         } else {
-            $error_message = "<a class='text white centered'>Désolé, mais vous ne pouvez pas publier plus de 15 illustrations. Veuillez en supprimer ou nous contacter.</a>";
+            $error_message = "<a class='text white centered'>Désolé, mais vous ne pouvez pas publier plus de 30 illustrations. Veuillez en supprimer ou nous contacter.</a>";
         }
     }
     ?>

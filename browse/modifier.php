@@ -35,7 +35,6 @@ if(isset($_POST["submit"])) {
     }
     if (!empty($_POST["description"])) {
         $newDescription = $_POST["description"];
-        echo $newDescription;
         if (strlen($newDescription) <= 255) {
             $request3 = "UPDATE illustration SET description=? WHERE id=?";
             $stmt = mysqli_prepare($idcom, $request3);

@@ -22,17 +22,6 @@
     <a href="../add/send.php" class="nav-item">ajouter.</a>
     <a href="../" class="nav-item">menu.</a>
     <a href="./unmoderate.php" class="nav-item">unmoderate.</a>
-    <?php
-    if (isset($_SESSION["username"]) && $_SESSION["username"]!=""){
-        ?>
-        <a class="nav-item" href="../connect/profile.php?username=<?php echo $_SESSION["username"]; ?>">mon compte.</a>
-        <?php
-    } else {
-        ?>
-        <a class="nav-item" href="../connect/login.php">mon compte.</a>
-        <?php
-    }
-    ?>
 </nav>
     <div class="marginTop">
         <a class="title left">verified.</a>
@@ -54,7 +43,7 @@
         $page = isset($_GET["page"]) ? $_GET["page"] : 1;
         $gap = ($page - 1) * $nbrelt;
 
-        $requestSearch = "SELECT * FROM illustration WHERE type=2 AND month=$month LIMIT ? OFFSET ?";
+        $requestSearch = "SELECT * FROM illustration WHERE type=2 AND month=$month ORDER BY date DESC LIMIT ? OFFSET ?";
         $stmt = mysqli_prepare($idcom, $requestSearch);
         mysqli_stmt_bind_param($stmt, "ii", $nbrelt, $gap);
 

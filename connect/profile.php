@@ -41,17 +41,6 @@ if (!$type) $type="illustration";
         <a href="../add/send.php" class="nav-item">ajouter.</a>
         <a href="../" class="nav-item">menu.</a>
         <a href="../browse/verified.php" class="nav-item">parcourir.</a>
-        <?php
-        if (isset($_SESSION["username"]) && $_SESSION["username"]!=""){
-            ?>
-            <a class="nav-item" href="../connect/profile.php?username=<?php echo $_SESSION["username"]; ?>">mon compte.</a>
-            <?php
-        } else {
-            ?>
-            <a class="nav-item" href="../connect/login.php">mon compte.</a>
-            <?php
-        }
-        ?>
     </nav>
     <div class="marginTop">
         <a class="title left"><?php echo $name ?>.</a>
@@ -71,7 +60,6 @@ if (!$type) $type="illustration";
         <?php
         if ($username==$_SESSION["username"]) { ?>
             <a class="buttonRed backTiffany text" href="modifier.php?username=<?php echo $username ?>">modifier.</a>
-
             <a class="buttonWB text" href="disconnect.php">deconnexion</a>
         <?php
         } if ($youtube!="" || $insta!=""){
@@ -81,17 +69,24 @@ if (!$type) $type="illustration";
         <?php
         }
         ?>
-        <a class="buttonWB text">
-            soutiens
-            <span class="mini"></span>
-        </a>
+        <?php
+        if ($soutiens>=2) {
+            ?>
+            <a class="buttonWB text">
+                soutiens
+                <span class="mini"></span>
+            </a>
+        <?php
+        }
+        ?>
+
     </div>
     <div class="centered width">
         <?php
         $nbrelt=14;
         $page = isset($_GET["page"]) ? $_GET["page"] : 1;
         $gap = ($page-1) * $nbrelt;
-        $request = "SELECT * from illustration WHERE username=\"$username\" LIMIT $gap, $nbrelt";
+        $request = "SELECT * from illustration WHERE username=\"$username\" ORDER BY date DESC LIMIT $gap, $nbrelt";
         $result = @mysqli_query($idcom, $request);
         while ($row = mysqli_fetch_assoc($result)) {
             $picFolder = "../db/illustration/";

@@ -27,11 +27,11 @@ ini_set('display_errors', 1);
         <?php
             if (isset($_SESSION["username"]) && $_SESSION["username"]!=""){
         ?>
-            <a class="nav-item" href="connect/profile.php?username=<?php echo $_SESSION["username"]; ?>">mon compte.</a>
+            <a class="nav-item" href="connect/profile.php?username=<?php echo $_SESSION["username"]; ?>">mon profil.</a>
         <?php
             } else {
                 ?>
-            <a class="nav-item" href="connect/login.php">mon compte.</a>
+            <a class="nav-item" href="connect/login.php">mon profil.</a>
         <?php
             }
         ?>
@@ -42,7 +42,7 @@ ini_set('display_errors', 1);
             <span> </span>
             <span class="titleSecond"> arts.</span>
         </a>
-        <a class="centered subtitle">gallerie d'art virtuelle</a>
+        <a class="centered subtitle">galerie d'art virtuelle</a>
     </div>
 
     <div class="centered">
@@ -54,7 +54,7 @@ ini_set('display_errors', 1);
     </div>
     <div class="centered width">
         <?php
-        $requestSearch = "SELECT * from illustration WHERE type=2";
+        $requestSearch = "SELECT * from illustration WHERE type=2 ORDER BY date DESC LIMIT 15";
         $resultSearch = @mysqli_query($idcom, $requestSearch);
         while ($rowSearch = mysqli_fetch_assoc($resultSearch)) {
             $coverFolder = "db/illustration/";

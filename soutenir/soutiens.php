@@ -35,21 +35,13 @@ if(isset($_POST["submit"])) {
 <nav>
     <a href="../add/send.php" class="nav-item">ajouter.</a>
     <a href="../" class="nav-item">menu.</a>
-    <a href="./unmoderate.php" class="nav-item">unmoderate.</a>
-    <?php
-    if (isset($_SESSION["username"]) && $_SESSION["username"]!=""){
-        ?>
-        <a class="nav-item" href="../connect/profile.php?username=<?php echo $_SESSION["username"]; ?>">mon compte.</a>
-        <?php
-    } else {
-        ?>
-        <a class="nav-item" href="../connect/login.php">mon compte.</a>
-        <?php
-    }
-    ?>
+    <a href="../browse/verified.php" class="nav-item">parcourir.</a>
 </nav>
 <div class="centered lilMarginTop marginBottom">
     <a class="donateButton" href="https://www.paypal.com/donate/?hosted_button_id=8XFJ7GKL2Y53W">faire un don</a>
+</div>
+<div class="centered lilMarginTop marginBottom">
+    <a class="rightTitle">n'oubliez pas d'indiquer votre identifiant sur le don</a>
 </div>
 <div class="left lilMarginTop">
     <a class="title">nos contributeurs.</a>

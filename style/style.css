@@ -1,12 +1,4 @@
 @font-face {
-    font-family: "Futura";
-    src: url(../fonts/FuturaBoldItalic.ttf);
-}
-@font-face {
-    font-family: "Futurabook";
-    src: url(../fonts/FuturaBookItalic.ttf);
-}
-@font-face {
     font-family: "nohemiEB";
     src: url(../fonts/NOHEMI-EXTRABOLD.otf);
 }
@@ -76,7 +68,7 @@ nav {
 }
 
 .height {
-    height: 80vh;
+    height: 60vh;
 }
 
 .homepic {
@@ -132,7 +124,7 @@ nav {
 .choicePic {
     width: 45vw;
     border-radius: 15px;
-    margin: 0 30px;
+    margin: 0 10px;
 }
 
 .reseaux {

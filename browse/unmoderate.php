@@ -22,18 +22,6 @@
         <a href="../add/send.php" class="nav-item">ajouter.</a>
         <a href="../" class="nav-item">menu.</a>
         <a href="./verified.php" class="nav-item">verified.</a>
-        <?php
-        if (isset($_SESSION["username"]) && $_SESSION["username"]!=""){
-            ?>
-            <a class="nav-item" href="../connect/profile.php?username=<?php echo $_SESSION["username"]; ?>">mon compte.</a>
-            <?php
-        } else {
-            ?>
-            <a class="nav-item" href="../connect/login.php">mon compte.</a>
-            <?php
-        }
-        ?>
-
     </nav>
     <div class="marginTop">
         <a class="title left">unmoderate.</a>
@@ -55,7 +43,7 @@
         $page = isset($_GET["page"]) ? $_GET["page"] : 1;
         $gap = ($page - 1) * $nbrelt;
 
-        $requestSearch = "SELECT * FROM illustration WHERE type=1 AND month=$month LIMIT ? OFFSET ?";
+        $requestSearch = "SELECT * FROM illustration WHERE type=1 AND month=$month ORDER BY date DESC LIMIT ? OFFSET ?";
         $stmt = mysqli_prepare($idcom, $requestSearch);
         mysqli_stmt_bind_param($stmt, "ii", $nbrelt, $gap);
 
@@ -76,14 +64,14 @@
         ?>
     </div>
     <?php
-    $countRequest = "SELECT COUNT(*) as total FROM illustration WHERE type=2";
+    $countRequest = "SELECT COUNT(*) as total FROM illustration WHERE type=1";
     $countResult = mysqli_query($idcom, $countRequest);
     $countRow = mysqli_fetch_assoc($countResult);
     $totalElements = $countRow['total'];
     $totalPages = ceil($totalElements / $nbrelt);
     echo "<div class=\"pageChoice centered\">";
     for ($i = 1; $i <= $totalPages; $i++) {
-        echo "<a href='verified.php?type=$type&page=$i'>$i</a> ";
+        echo "<a href='unmoderate.php?type=$type&page=$i'>$i</a> ";
     }
     echo "</div>";
     ?>

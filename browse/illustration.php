@@ -57,6 +57,28 @@ $id = $_GET["id"];
             }
             ?>
         </div>
+        <?php if ($type==2) {
+            ?>
+        <div class="margin lilMarginTop marginBottom">
+            <a class="buttonBlue text">verified.</a>
+        </div>
+        <?php
+        } if($type==1){
+        ?>
+        <div class="margin lilMarginTop marginBottom">
+            <a class="buttonRed text">unmoderate.</a>
+        </div>
+        <?php
+        } if ($_SESSION["role"]==3){
+            ?>
+        <div class="margin lilMarginTop">
+            <a class="buttonBlue text" href="../db/verifyIllustration.php?id=<?php echo $id?>" >verified.</a>
+            <a class="buttonRed text" href="../db/unmoderateIllustration.php?id=<?php echo $id?>" >unmoderate.</a>
+        </div>
+        <?php
+        }
+        ?>
+
     </div>
     <div class="marginBottom"></div>
     <div class="left">
