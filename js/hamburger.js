@@ -3,6 +3,14 @@ document.addEventListener('DOMContentLoaded', function () {
     var menu = document.getElementById('menu');
 
     menuToggle.onclick = function () {
-        menu.style.opacity = (menu.style.opacity === '' || menu.style.opacity === '0' ? '1' : '0');
+        if (menu.classList.contains('show')) {
+            menu.classList.remove('show');
+            setTimeout(function () {
+                menu.style.display = 'none';
+            }, 300);
+        } else {
+            menu.style.display = 'flex';
+            menu.classList.add('show');
+        }
     };
 });

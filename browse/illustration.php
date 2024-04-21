@@ -70,7 +70,7 @@ $id = $_GET["id"];
         while ($row2 = mysqli_fetch_assoc($result2)) {
             $name = $row2["name"];
             $soutiens = $row2["soutiens"];
-            echo "<div class=\"illustrationContainer\">";
+            echo "<div class=\"illustrationContainer lilMarginTop\">";
             echo "<img src=" . $picFolder . $filePic . " class=\"illustration big\">";
             echo "</div></div>";
 

@@ -110,7 +110,6 @@ $requestvisitors = "UPDATE month SET visitors = visitors + 1 WHERE month = $mont
     <a class="title left">illustration.</a>
     <a class="rightTitle">de la semaine</a>
 </div>
-<div class="centered lilMarginTop midHeight">
     <?php
     $requestSearch = "SELECT * from illustration WHERE type=3 LIMIT 1";
     $resultSearch = @mysqli_query($idcom, $requestSearch);
@@ -123,16 +122,20 @@ $requestvisitors = "UPDATE month SET visitors = visitors + 1 WHERE month = $mont
         $username = $rowSearchTop["username"];
         $request3 = "SELECT name FROM user WHERE username='$username'";
         $result3 = @mysqli_query($idcom, $request3);
-        echo "<div class=\"illustrationContainer animate-on-scroll\">";
-        echo "<a href=\"browse/illustration.php?id=$id\"><img src=" . $coverFolder . $pic . " class=\"illustration medium\"></a>";
+        echo "<div class=\"centered lilMarginTop midHeight\">";
+        echo "<div class=\"centered animate-on-scroll\">";
+        echo "<a href=\"browse/illustration.php?id=$id\"><img src=" . $coverFolder . $pic . " class=\"illustration big\"></a>";
         echo "</div>";
+        echo "</div>";
+        echo "<div class=\"centered\">";
         echo "<div class=\"formulaire desc left animate-on-scroll\">";
         echo "<p class=\"textSection centerText\">" . $name . "</p>";
         echo "<div class=\"lilMarginTop\"><p class=\"rightTitle centerText\">" . $description . "</p></div>";
         echo "</div>";
+        echo "</div>";
     }
     ?>
-</div>
+
 <div class="marginTop">
     <a class="title left">verified.</a>
     <a class="rightTitle">les meilleures illustrations de SYA</a>

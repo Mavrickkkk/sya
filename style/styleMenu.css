@@ -38,13 +38,18 @@
     height: 100%;
     background: linear-gradient(to right, rgba(15, 15, 15, 1) 30%, rgba(15, 15, 15, 0) 100%);
     opacity: 0;
-    transition: opacity 0.5s ease-out;
-    display: flex;
+    transition: opacity 0.5s ease-in-out;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     padding: 20px;
 }
+
+#menu.show {
+    opacity: 1;
+}
+
 
 #menuToggle input:checked ~ #menu {
     opacity: 1;
