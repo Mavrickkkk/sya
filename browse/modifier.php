@@ -55,9 +55,51 @@ if(isset($_POST["submit"])) {
     <title>illustration.</title>
     <link rel="icon" href="../pics/favicon.png"/>
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/styleForm.css">
+    <link rel="stylesheet" href="../style/styleMenu.css">
+    <script src="../js/hamburger.js"></script>
+    <script src="../js/apparition.js"></script>
     <meta charset="utf-8"/>
 </head>
 <body>
+<div id="menuToggle">
+    <input type="checkbox"/>
+    <span></span>
+    <span></span>
+</div>
+<div id="menu">
+    <a class="titleSecond" href="../">menu.</a>
+    <p class="noMargin"> retourner au menu </p>
+    <?php
+    if (isset($_SESSION["username"]) && $_SESSION["username"] != "") {
+        ?>
+        <a class="titleSecond" href="../connect/profile.php?username=<?php echo $_SESSION["username"]; ?>">mon profil.</a>
+        <p class="noMargin"> connecté en tant que <?php echo $_SESSION["name"]; ?> </p>
+        <?php
+    } else {
+        ?>
+        <a class="titleSecond" href="../connect/login.php">mon profil.</a>
+        <p class="noMargin"> me connecter </p>
+        <?php
+    }
+    ?>
+    <a class="titleSecond" href="../add/send.php">ajouter.</a>
+    <p class="noMargin"> envoyer votre illustration </p>
+    <a class="titleSecond" href="../browse/verified.php">parcourir.</a>
+    <p class="noMargin"> explorer le meilleur de SYA </p>
+    <a class="titleSecond" href="../soutenir/soutiens.php">soutenir.</a>
+    <p class="noMargin"> obtenir les dernières fonctionnalités </p>
+    <?php
+    if (isset($_SESSION["role"]) && $_SESSION["role"]==2 || $_SESSION["role"]==3) {
+        ?>
+        <a class="titleSecond" href="../soutenir/soutiens.php">unmoderate.</a>
+        <p class="noMargin"> les illustrations non modérées </p>
+        <a class="titleSecond" href="../moderate/user.php">modération.</a>
+        <p class="noMargin">gestion des utilisateurs </p>
+        <?php
+    }
+    ?>
+</div>
 <div class="centered totalHeight midHeight">
     <?php
     $request = "SELECT * from illustration WHERE id=$id";
@@ -80,26 +122,27 @@ if(isset($_POST["submit"])) {
         }
     }
     ?>
+    <div class="bigMarginLeft">
+        <a class="buttonBorderW" href="illustration.php?id=<?php echo $id ?>">retour</a>
+    </div>
     <div class="centered marginBottom">
-        <div class="backW">
-            <a class="title black left lilMarginTop">Modifier.</a>
-            <a class="rightTitle black">uniquement les champs nécessaires</a>
+        <div class="formulaire">
+            <a class="title left lilMarginTop">Modifier.</a>
+            <a class="rightTitle">uniquement les champs nécessaires</a>
             <form action="modifier.php?id=<?php echo $id; ?>" method="post">
                 <div class="form-group lilMarginTop">
-                    <label for="name">Nom de l'illustration :</label>
-                    <input type="text" name="name" id="name" value="<?php echo $nameIllustration; ?>">
+                    <p class="marginV textSection">Nom de l'illustration</p>
+                    <input class="input" type="text" name="name" id="name" value="<?php echo $nameIllustration; ?>">
                 </div>
                 <div class="form-group lilMarginTop marginBottom">
-                    <label for="description">Description :</label>
-                    <input type="text" name="description" id="description" value="<?php echo $description; ?>">
+                    <p class="marginV textSection">Description</p>
+                    <input class="input" type="text" name="description" id="description" value="<?php echo $description; ?>">
                 </div>
                 <div class="form-group">
                     <div class="centered">
-                        <button class="buttonBW text" type="submit" name="submit">Mettre à jour</button>
+                        <button class="submitForm text" type="submit" name="submit">Mettre à jour</button>
                     </div>
-                    <div class="centered lilMarginTop EL">
-                        <a class="rightTitle black" href="illustration.php?id=<?php echo $id ?>">retour</a>
-                    </div>
+
                     <div class="centered lilMarginTop EL">
                         <button class="rightTitle redText" type="submit" name="delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette illustration ?')">Supprimer l'illustration</button>
                     </div>

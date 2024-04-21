@@ -1,0 +1,59 @@
+#menuToggle {
+    display: block;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#menuToggle input {
+    display: none;
+}
+
+#menuToggle span {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    background: #fff;
+    border-radius: 0px;
+    z-index: 110;
+
+}
+
+#menuToggle:hover {
+    transform: scale(1.1); /* Ajustez la valeur pour modifier l'intensité du zoom */
+    transition: transform 0.3s ease; /* Ajustez la durée et le timing de la transition */
+}
+
+
+#menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px; /* Ajustez la largeur du menu */
+    height: 100%;
+    background: linear-gradient(to right, rgba(15, 15, 15, 1) 30%, rgba(15, 15, 15, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+#menuToggle input:checked ~ #menu {
+    opacity: 1;
+}
+
+#menu a {
+    display: block;
+    margin-top: 30px;
+    font-size: 22px;
+    color: #fff;
+    text-decoration: none;
+}

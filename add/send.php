@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-function checkAndRenameFile($targetDir, $fileName) {
+function checkAndRenameFile($targetDir, $fileName)
+{
     $originalName = $fileName;
     $i = 0;
 
@@ -15,9 +16,9 @@ function checkAndRenameFile($targetDir, $fileName) {
 }
 
 if (isset($_SESSION["username"])) {
-    $type=$_GET["type"];
-    if (!$type) $type="illustration";
-    $username=$_SESSION["username"];
+    $type = $_GET["type"];
+    if (!$type) $type = "illustration";
+    $username = $_SESSION["username"];
     include("../db/connex.inc.php");
     $idcom = connex("myparam");
 
@@ -29,12 +30,12 @@ if (isset($_SESSION["username"])) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($currentPostCount < 30) {
             if (!isset($_POST["accept_terms"])) {
-                $error_message = "<a class='text white centered'>Désolé, mais vous ne pouvez pas envoyer quelque chose sans accepter les conditions</a>";
+                $error_message = "<a class='subtitle white centered'>Vous ne pouvez pas envoyer d'illustration sans accepter les conditions</a>";
             } else {
                 if (!empty($_FILES["fileIllustration"]["name"])) {
                     $targetDirCover = "../db/illustration/";
                     if (!is_dir($targetDirCover)) {
-                        echo "<a class='text white centered'>Le dossier de destination n'existe pas.</a>";
+                        echo "<a class='subtitle white centered'>Le dossier de destination n'existe pas.</a>";
                         exit();
                     }
 
@@ -46,37 +47,42 @@ if (isset($_SESSION["username"])) {
                     $allowTypes = array('jpg', 'png', 'jpeg');
 
                     if (empty($_POST["name"])) {
-                        $error_message = "<a class='text white centered'>Le nom ne peut pas être vide</a>";
+                        $error_message = "<a class='subtitle white centered'>Le nom ne peut pas être vide</a>";
                     } else {
-                        if (in_array($fileType, $allowTypes)) {
-                            if (move_uploaded_file($_FILES["fileIllustration"]["tmp_name"], $targetFilePath)) {
-                                $user = $_SESSION["username"];
-                                $name = $_POST["name"];
-
-                                $stmt = mysqli_prepare($idcom, "INSERT INTO illustration (pic, name, date, username) VALUES (?, ?, NOW(), ?)");
-                                mysqli_stmt_bind_param($stmt, "sss", $filePic, $name, $user);
-
-                                if (mysqli_stmt_execute($stmt)) {
-                                    $request2 = "UPDATE user SET post=post+1 WHERE username='$user'";
-                                    mysqli_query($idcom, $request2);
-
-                                    header('Location: ../');
-                                    exit();
-                                } else {
-                                    $error_message = "<a class='text white centered'>Erreur lors de l'exécution de la requête</a>";
-                                }
-                                mysqli_stmt_close($stmt);
-                            }
+                        if (empty($_POST["description"])) {
+                            $error_message = "<a class='subtitle white centered'>La description ne peut pas être vide</a>";
                         } else {
-                            $error_message = "<a class='text white centered'>Veuillez sélectionner un fichier PNG ou JPG</a>";
+                            if (in_array($fileType, $allowTypes)) {
+                                if (move_uploaded_file($_FILES["fileIllustration"]["tmp_name"], $targetFilePath)) {
+                                    $user = $_SESSION["username"];
+                                    $name = $_POST["name"];
+                                    $description = $_POST["description"];
+
+                                    $stmt = mysqli_prepare($idcom, "INSERT INTO illustration (pic, name, description, date, username) VALUES (?, ?, ?, NOW(), ?)");
+                                    mysqli_stmt_bind_param($stmt, "ssss", $filePic, $name, $description, $user);
+
+                                    if (mysqli_stmt_execute($stmt)) {
+                                        $request2 = "UPDATE user SET post=post+1 WHERE username='$user'";
+                                        mysqli_query($idcom, $request2);
+
+                                        header('Location: ../');
+                                        exit();
+                                    } else {
+                                        $error_message = "<a class='subtitle white centered'>Erreur lors de l'exécution de la requête</a>";
+                                    }
+                                    mysqli_stmt_close($stmt);
+                                }
+                            } else {
+                                $error_message = "<a class='subtitle white centered'>Veuillez sélectionner un fichier PNG ou JPG</a>";
+                            }
                         }
                     }
                 } else {
-                    $error_message = "<a class='text white centered'>Veuillez sélectionner un fichier d'illustration</a>";
+                    $error_message = "<a class='subtitle white centered'>Veuillez sélectionner un fichier d'illustration</a>";
                 }
             }
         } else {
-            $error_message = "<a class='text white centered'>Désolé, mais vous ne pouvez pas publier plus de 30 illustrations. Veuillez en supprimer ou nous contacter.</a>";
+            $error_message = "<a class='subtitle white centered'>Désolé, mais vous ne pouvez pas publier plus de 30 illustrations. Veuillez en supprimer ou nous contacter.</a>";
         }
     }
     ?>
@@ -85,59 +91,75 @@ if (isset($_SESSION["username"])) {
         <title>ajouter.</title>
         <link rel="icon" href="../pics/favicon.png"/>
         <link rel="stylesheet" href="../style/style.css">
+        <link rel="stylesheet" href="../style/styleForm.css">
+        <link rel="stylesheet" href="../style/styleMenu.css">
+        <script src="../js/hamburger.js"></script>
+        <script src="../js/apparition.js"></script>
         <meta charset="utf-8"/>
     </head>
     <body>
-    <nav>
-        <a href="../" class="nav-item">menu.</a>
-        <a href="../browse/verified.php" class="nav-item">parcourir.</a>
+    <div id="menuToggle">
+        <input type="checkbox"/>
+        <span></span>
+        <span></span>
+    </div>
+    <div id="menu">
+        <a class="titleSecond" href="../">menu.</a>
+        <p class="noMargin"> retourner au menu </p>
         <?php
-        if (isset($_SESSION["username"]) && $_SESSION["username"]!=""){
+        if (isset($_SESSION["username"]) && $_SESSION["username"] != "") {
             ?>
-            <a class="nav-item" href="../connect/profile.php?username=<?php echo $_SESSION["username"]; ?>">mon compte.</a>
+            <a class="titleSecond" href="../connect/profile.php?username=<?php echo $_SESSION["username"]; ?>">mon profil.</a>
+            <p class="noMargin"> connecté en tant que <?php echo $_SESSION["name"]; ?> </p>
+            <?php
+        } else {
+            ?>
+            <a class="titleSecond" href="../connect/login.php">mon profil.</a>
+            <p class="noMargin"> me connecter </p>
             <?php
         }
         ?>
-    </nav>
-    <div class="marginTop">
-        <a class="title left">Ajouter.</a>
-        <a class="rightTitle">veuillez remplir tous les champs suivants (modifiable par la suite)</a>
+        <a class="titleSecond" href="../add/send.php">ajouter.</a>
+        <p class="noMargin"> envoyer votre illustration </p>
+        <a class="titleSecond" href="../browse/verified.php">parcourir.</a>
+        <p class="noMargin"> explorer le meilleur de SYA </p>
+        <a class="titleSecond" href="../soutenir/soutiens.php">soutenir.</a>
+        <p class="noMargin"> obtenir les dernières fonctionnalités </p>
+        <?php
+        if (isset($_SESSION["role"]) && $_SESSION["role"]==2 || $_SESSION["role"]==3) {
+            ?>
+            <a class="titleSecond" href="../moderate/user.php">modération.</a>
+            <p class="noMargin">gestion des utilisateurs </p>
+            <?php
+        }
+        ?>
     </div>
-    <div class="centered">
-        <div class="blue"></div>
-    </div>
-    <div class="centered">
-        <div class="blue2"></div>
-    </div>
-    <div class="centered">
-        <div class="blue3"></div>
-    </div>
-    <div class="left lilMarginTop">
-    </div>
-    <div class="centered lilMarginTop">
-        <form action="" method="post" enctype="multipart/form-data">
-            <div class="form-group lilMarginTop white">
-                <label for="fileIllustration">illustration :</label>
-                <input type="file" name="fileIllustration" id="fileIllustration">
-            </div>
-            <div class="form-group lilMarginTop">
-                <input type="text" name="name" minlength="2" maxlength="25" placeholder="name" class="search">
-            </div>
-            <label>
-                <div class="lilMarginTop">
-                    <input type="checkbox" name="accept_terms"> <a class="rightTitle white">J'accepte que tout le monde puisse utiliser mon illustration à des fins personnelles.</a>
+    <div class="centered marginBottom">
+        <div class="formulaire">
+            <p class="title">Ajouter.</p></br>
+            <p class="subtitle white">* tous les champs sont nécessaires</p>
+            <form action="send.php" method="post" enctype="multipart/form-data">
+                <p class="marginV textSection">Nom</p>
+                <input type="text" name="name" minlength="2" maxlength="25" class="input">
+                <p class="marginV textSection">Description</p>
+                <textarea name="description" minlength="2" maxlength="250" class="input textArea"></textarea>
+                <p class="marginV textSection">illustration :</p>
+                <input type="file" name="fileIllustration" class="subtitle white"></br>
+                <div class="marginV"><input type="checkbox" name="accept_terms"> <a class="subtitle white">J'accepte que
+                        tout le
+                        monde puisse utiliser mon illustration à des fins personnelles.</a></div>
+                <div class="form-group lilMarginTop centered marginBottom">
+                    <button class="submitForm text" type="submit" name="submitIllustration">envoyer.</button>
                 </div>
-            </label>
-            <div class="form-group lilMarginTop centered marginBottom">
-                <button class="buttonWB text" type="submit" name="submitIllustration">envoyer.</button>
-            </div>
-        </form>
+            </form>
+            <?php
+            if (isset($error_message)) {
+                echo $error_message;
+            }
+            ?>
+        </div>
     </div>
-    <?php
-    if (isset($error_message)) {
-        echo $error_message;
-    }
-    ?>
+
     </body>
     </html>
     <?php

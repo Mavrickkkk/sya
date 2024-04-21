@@ -18,22 +18,22 @@ if (isset($_POST["submit"])) {
                         $_SESSION["username"] = $row["username"];
                         $_SESSION["name"] = $row["name"];
                         $_SESSION["role"] = $row["role"];
-                        header('Location: ../index.php');
+                        header('Location: ../');
                         exit();
                     } else {
-                        echo "<a class='error-message'>Incorrect password</a>";
+                        $error_message = "<a class='subtitle white centered'>Mot de passe incorrect</a>";
                     }
                 }
             } else {
-                echo "<a class='error-message'>Username does not exist</a>";
+                $error_message = "<a class='subtitle white centered'>Ce nom d'utilisateur n'existe pas</a>";
             }
         } else {
-            echo "<a class='error-message'>Database error</a>";
+            $error_message = "<a class='subtitle white centered'>Erreur dans la base de donnée</a>";
         }
 
         mysqli_stmt_close($stmt);
     } else {
-        echo "<a class='error-message'>Please complete all fields</a>";
+        $error_message = "<a class='subtitle white centered'>Veuillez remplir tous les champs</a>";
     }
 }
 ?>
@@ -42,40 +42,70 @@ if (isset($_POST["submit"])) {
 <head>
     <title>se connecter.</title>
     <link rel="icon" href="../pics/favicon.png"/>
-    <link rel="stylesheet" href="../style/styleConnect.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/styleForm.css">
+    <link rel="stylesheet" href="../style/styleMenu.css">
+    <script src="../js/hamburger.js"></script>
+    <script src="../js/apparition.js"></script>
     <meta charset="utf-8"/>
 </head>
 <body>
-<div class="sticky-bar">
-    <div class="bar-content">
-        <a href="../index.php"></a>
-        <ul class="bar-links">
-            <li><a class="links">cette page est en travaux</a></li>
-            <li><a href="../browse/verified.php" class="links">parcourir</a></li>
-            <li><a href="../" class="links">menu</a></li>
-            <?php
-            if (!isset($_SESSION["username"])){
-                ?>
-                <?php
-            }else {
-                ?>
-                <li><a class="links">quoi</a></li>
-                <?php
-            }
-            ?>
-        </ul>
+<div id="menuToggle">
+    <input type="checkbox"/>
+    <span></span>
+    <span></span>
+</div>
+<div id="menu">
+    <a class="titleSecond" href="../">menu.</a>
+    <p class="noMargin"> retourner au menu </p>
+    <?php
+    if (isset($_SESSION["username"]) && $_SESSION["username"] != "") {
+        ?>
+        <a class="titleSecond" href="../connect/profile.php?username=<?php echo $_SESSION["username"]; ?>">mon profil.</a>
+        <p class="noMargin"> connecté en tant que <?php echo $_SESSION["name"]; ?> </p>
+        <?php
+    } else {
+        ?>
+        <a class="titleSecond" href="../connect/login.php">mon profil.</a>
+        <p class="noMargin"> me connecter </p>
+        <?php
+    }
+    ?>
+    <a class="titleSecond" href="../add/send.php">ajouter.</a>
+    <p class="noMargin"> envoyer votre illustration </p>
+    <a class="titleSecond" href="../browse/verified.php">parcourir.</a>
+    <p class="noMargin"> explorer le meilleur de SYA </p>
+    <a class="titleSecond" href="../soutenir/soutiens.php">soutenir.</a>
+    <p class="noMargin"> obtenir les dernières fonctionnalités </p>
+    <?php
+    if (isset($_SESSION["role"]) && $_SESSION["role"]==2 || $_SESSION["role"]==3) {
+        ?>
+        <a class="titleSecond" href="../soutenir/soutiens.php">unmoderate.</a>
+        <p class="noMargin"> les illustrations non modérées </p>
+        <a class="titleSecond" href="../moderate/user.php">modération.</a>
+        <p class="noMargin">gestion des utilisateurs </p>
+        <?php
+    }
+    ?>
+</div>
+<div class="centered">
+    <div class="formulaire">
+        <p class="title">Me connecter.</p></br>
+        <p class="subtitle white">Heureux de vous revoir, vous nous avez manqué(e)</p>
+        <form action="login.php" method="POST">
+            <p class="marginV textSection">nom d'utilisateur </p> <input class="input" type="text" name="username" required></br>
+            <p class="marginV textSection">mot de passe </p> <input class="input" type="password" name="password" required></br>
+            <div class="centered"><input class="submitForm text" type="submit" name="submit" value="se connecter"></div>
+        </form>
     </div>
 </div>
-<div class="logoContainer">
-    <a href="../index.php"><img src="../pics/logo4.png" class="logo"></a>
+<div class="lilMarginTop">
+<?php
+if (isset($error_message)) {
+    echo $error_message;
+}
+?>
 </div>
-<div class="textCenter"><a href="register.php" class="new">je suis nouveau</a></div>
-<div class="centered-container">
-    <form action="login.php" method="POST">
-        <a>nom d'utilisateur :</a> <input class="search" type="text" name="username"></br>
-        <a>mot de passe :</a> <input class="search" type="password" name="password"></br>
-        <div class="submitButton"><input class="sendButton" type="submit" name="submit" value="se connecter"></div>
-    </form>
-</div>
+<div class="centered lilMarginTop"><a href="register.php" class="subtitle white">je suis nouveau</a></div>
 </body>
 </html>

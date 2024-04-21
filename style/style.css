@@ -17,6 +17,12 @@ body {
     background-color: #0F0F0F;
 }
 
+p {
+    font-family: NohemiEL, sans-serif;
+    color: white;
+    font-size: 100%;
+}
+
 .centered {
     width: 100%;
     display: flex;
@@ -62,17 +68,25 @@ nav {
 }
 
 .subtitle {
+    text-decoration: none;
     font-family: NohemiEL, sans-serif;
     font-size: 100%;
     color: #7e7e7e;
 }
 
+.whiteBack {
+    background-color: white;
+    width: 100%;
+    border-radius: 50px;
+    padding: 50px;
+}
+
 .height {
-    height: 60vh;
+    height: 70vh;
 }
 
 .homepic {
-    width: 90vw;
+    width: 80vw;
     border-radius: 50px;
 }
 
@@ -106,6 +120,22 @@ nav {
     margin-left: 30px;
 }
 
+.noMargin {
+    margin: 0;
+}
+
+.marginV {
+    margin: 30px 0;
+}
+
+.block {
+    display: block;
+}
+
+.centerText {
+    text-align: center;
+}
+
 .width {
     width: 100%;
     display: flex;
@@ -118,23 +148,90 @@ nav {
     max-height: 35vh;
     object-fit: cover;
     border-radius: 15px;
-    transition: transform 1s ease-in-out;
+    transition: transform 0.3s ease;
+}
+
+.illustration:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s ease;
+}
+
+.buttonBorderW {
+    background-color: #0F0F0F;
+    color: white;
+    border: solid 1px white;
+    padding: 10px 20px;
+    font-family: NohemiEL, sans-serif;
+    border-radius: 30px;
+    margin: 0 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.buttonBorderW:hover {
+    background-color: #ffffff;
+    color: black;
+    transform: scale(1.03);
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.animate-on-scroll.active {
+    opacity: 1;
 }
 
 .choicePic {
-    width: 45vw;
-    border-radius: 15px;
+    width: 60vw;
+    border-radius: 50px;
     margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+
+.choicePic:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s ease;
 }
 
 .reseaux {
     width: 70vw;
-    border-radius: 15px;
+    border-radius: 50px;
+    transition: transform 0.3s ease;
+}
+
+.reseaux:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s ease;
 }
 
 .soutenir {
-    width: 70vw;
-    border-radius: 15px;
+    width: 80vw;
+    border-radius: 90px;
+    transition: transform 0.3s ease;
+}
+
+.soutenir:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 1080px) {
+    .illustration {
+        max-width: 80vw;
+        max-height: 80vh;
+        object-fit: cover;
+        border-radius: 15px;
+        transition: transform 0.3s ease;
+        margin-bottom: 40px;
+    }
+    .choicePic {
+        width: 80vw;
+    }
+    .reseaux {
+        width: 80vw;
+    }
 }
 
 /**************************************************************************************************************************/
@@ -205,7 +302,7 @@ nav {
 /**************************************************************************************************************************/
 
 .totalHeight {
-    height: 100vh;
+    height: 80vh;
 }
 
 .midHeight {
@@ -215,6 +312,11 @@ nav {
 .big {
     max-width: 60vw;
     max-height: 60vh;
+}
+
+.medium {
+    max-width: 40vw;
+    max-height: 50vh;
 }
 
 .text {
@@ -237,10 +339,13 @@ nav {
     padding: 10px 20px;
     border-radius: 30px;
     margin: 0 10px;
+    transition: transform 0.3s ease;
 }
 
 .buttonBlue:hover {
     background-color: #0d3ca6;
+    transform: scale(1.03);
+    transition: transform 0.3s ease;
 }
 
 .buttonRed {
@@ -249,9 +354,58 @@ nav {
     padding: 10px 20px;
     border-radius: 30px;
     margin: 0 10px;
+    transition: transform 0.3s ease;
 }
+
 .buttonRed:hover {
-     background-color: #a2301e;
+    background-color: #a2301e;
+    transform: scale(1.03);
+    transition: transform 0.3s ease;
+}
+
+.buttonBRed {
+    background-color: #0F0F0F;
+    border: solid 1px #EE4A2F;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin: 0 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.buttonBRed:hover {
+    background-color: #EE4A2F;
+    transform: scale(1.03);
+}
+
+.buttonBBlue {
+    background-color: #0F0F0F;
+    border: solid 1px #165CFB;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin: 0 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.buttonBBlue:hover {
+    background-color: #165CFB;
+    transform: scale(1.03);
+}
+
+.buttonBGreen {
+    background-color: #0F0F0F;
+    border: solid 1px #19be19;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin: 0 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.buttonBGreen:hover {
+    background-color: #19be19;
+    transform: scale(1.03);
 }
 
 .buttonWB {
@@ -286,6 +440,12 @@ nav {
 
 .lilMarginTop {
     margin-top: 30px;
+}
+
+.desc {
+    height: auto;
+    max-height: 30vh;
+    max-width: 40vw;
 }
 
 .mini {
@@ -374,6 +534,34 @@ nav {
 
 .backTiffany:hover {
     background-color: #078885;
+}
+
+.buttonBTiffany {
+    background-color: #0F0F0F;
+    border: solid 1px #0ABAB5;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin: 0 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.buttonBTiffany:hover {
+    background-color: #0ABAB5;
+    transform: scale(1.03);
+}
+
+.profilePic {
+    border-radius: 50vw;
+    width: 400px;
+}
+
+.post {
+    background-color: #1C1C1C;
+    border-radius: 10px;
+    width: 70vw;
+    height: auto;
+    padding: 30px 10px;
 }
 
 /**************************************************************************************************************************/
